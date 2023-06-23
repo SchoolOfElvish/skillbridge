@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+source ./bin/binfiles/setup_env
+
+check_file_exists ./backend/.env
+check_env_file ./backend/.env ./backend/.env.example
+
+check_file_exists ./frontend/.env.development
+
+docker compose build
+
+bin/backend/bundle install
+bin/backend/rails db:migrate
+
+bin/frontend/pnpm install

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+bin/backend/rubocop
+bin/backend/rspec
+
+bin/frontend/format
+bin/frontend/lint
+bin/frontend/check

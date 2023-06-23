@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+if [[ $1 == "--coverage" ]]; then
+  command="docker compose run --rm backend /bin/bash -c 'COVERAGE=true bundle exec rspec'"
+else
+  command="docker compose run --rm backend /bin/bash -c 'bundle exec rspec ${@}'"
+fi
+
+eval $command

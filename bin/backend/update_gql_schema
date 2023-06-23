@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+bin/backend/bundle exec rails graphql:schema:update
+cp ./backend/schema.graphql ./frontend
+rm ./backend/schema.graphql
