@@ -1,3 +1,5 @@
+name: Build and deploy
+
 on:
   workflow_call:
     inputs:
@@ -93,7 +95,7 @@ jobs:
           username: ${{ secrets.vps-user }}
           password: ${{ secrets.vps-password }}
           script: |
-            cd ~/SchoolOfElvish/codeboard
+            cd ~/SchoolOfElvish/skillbridge
             docker login https://ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
             docker compose -f production.yml pull
             docker compose -f production.yml up -d
