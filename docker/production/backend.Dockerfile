@@ -31,4 +31,6 @@ COPY --chown=backend:backend backend ./
 
 RUN SECRET_KEY_BASE=`bundle exec rake secret` bundle exec rake assets:precompile
 
-CMD bundle exec rake db:migrate && bin/rails server
+ENTRYPOINT ["./bin/docker-entrypoint.sh"]
+
+CMD ["./bin/rails", "server"]
