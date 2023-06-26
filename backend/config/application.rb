@@ -1,14 +1,14 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-if ['development', 'test'].include? ENV['RAILS_ENV']
-  Dotenv::Railtie.load
-end
+Dotenv::Railtie.load if %w[development test].include? ENV['RAILS_ENV']
 
 module Skillbridge
   class Application < Rails::Application
@@ -22,5 +22,6 @@ module Skillbridge
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << 'backend'
   end
 end

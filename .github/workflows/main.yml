@@ -24,13 +24,13 @@ jobs:
         run: bin/backend/bundle install
 
       - name: Run rubocop
-        run: bin/backend/lint
+        run: bin/backend/rubocop
 
       - name: Prepare database
         run: bin/backend/run "bundle exec rake db:prepare"
 
       - name: Run tests
-        run: bin/backend/test
+        run: bin/backend/rspec
 
   validate-frontend:
     runs-on: ubuntu-latest
@@ -46,10 +46,10 @@ jobs:
         run: docker compose build --build-arg UID=$UID frontend
 
       - name: Install dependencies
-        run: bin/frontend/yarn install
+        run: bin/frontend/pnpm install
 
       - name: Build vite
-        run: bin/frontend/yarn build
+        run: bin/frontend/pnpm build
 
       - name: Run svelte-check
         run: bin/frontend/check
