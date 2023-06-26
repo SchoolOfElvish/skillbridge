@@ -24,13 +24,13 @@ jobs:
         run: bin/backend/bundle install
 
       - name: Run rubocop
-        run: bin/backend/lint
+        run: bin/backend/rubocop
 
       - name: Prepare database
         run: bin/backend/run "bundle exec rake db:prepare"
 
       - name: Run tests
-        run: bin/backend/test
+        run: bin/backend/rspec
 
   validate-frontend:
     runs-on: ubuntu-latest
