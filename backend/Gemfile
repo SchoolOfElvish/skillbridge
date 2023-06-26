@@ -82,3 +82,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "graphql", "~> 2.0"
+gem "graphiql-rails", group: :development
