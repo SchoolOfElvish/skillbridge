@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import type { PageData } from './$houdini'
+
+  export let data: PageData
+  $:({ TestQuery } = data)
+</script>
+{#if $TestQuery?.fetching}
+  <p>Loading...</p>
+{:else}
+  {$TestQuery.data?.testField}
+{/if}
