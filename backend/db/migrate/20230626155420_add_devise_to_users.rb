@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class AddDeviseToUsers < ActiveRecord::Migration[7.0]
+  # rubocop:disable Rails/BulkChangeTable
   def self.up
     change_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -32,7 +33,6 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
     end
@@ -48,4 +48,5 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.0]
     # model already existed. Please edit below which fields you would like to remove in this migration.
     raise ActiveRecord::IrreversibleMigration
   end
+  # rubocop:enable Rails/BulkChangeTable
 end

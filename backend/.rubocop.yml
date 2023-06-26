@@ -4,5 +4,3 @@ Style/Documentation:
 AllCops:
   SuggestExtensions: false
   NewCops: enable
-  Exclude:
-  - bin/*

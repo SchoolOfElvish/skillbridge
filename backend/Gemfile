@@ -81,7 +81,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
 
-gem "graphql", "~> 2.0"
-gem "graphiql-rails", group: :development
+gem 'graphiql-rails', group: :development
+gem 'graphql', '~> 2.0'
