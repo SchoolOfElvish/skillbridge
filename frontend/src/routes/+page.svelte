@@ -1,11 +1,6 @@
 <script lang="ts">
-  import type { PageData } from './$houdini'
+  import type { PageServerData } from './$houdini'
 
-  export let data: PageData
-  $:({ TestQuery } = data)
+  export let data: PageServerData
 </script>
-{#if $TestQuery?.fetching}
-  <p>Loading...</p>
-{:else}
-  {$TestQuery.data?.testField}
-{/if}
+{ data.data?.testField }
