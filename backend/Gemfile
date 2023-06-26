@@ -86,6 +86,6 @@ gem 'devise', '~> 4.9'
 gem 'graphiql-rails', group: :development
 gem 'graphql', '~> 2.0'
 
-gem "rack-cors", "~> 2.0"
+gem 'rack-cors', '~> 2.0'
 
-gem "jwt", "~> 2.7"
+gem 'jwt', '~> 2.7'

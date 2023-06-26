@@ -3,7 +3,6 @@
 module Services
   module Jwt
     class Expiry
-
       def expiry
         2.hours
       end

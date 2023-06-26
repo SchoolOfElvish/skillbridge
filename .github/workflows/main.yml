@@ -46,10 +46,10 @@ jobs:
         run: docker compose build --build-arg UID=$UID frontend
 
       - name: Install dependencies
-        run: bin/frontend/yarn install
+        run: bin/frontend/pnpm install
 
       - name: Build vite
-        run: bin/frontend/yarn build
+        run: bin/frontend/pnpm build
 
       - name: Run svelte-check
         run: bin/frontend/check

@@ -8,7 +8,7 @@ class RefreshToken < ApplicationRecord
 
   def self.find_by_token(token)
     crypted_token = Digest::SHA256.hexdigest token
-    RefreshToken.find_by(crypted_token: crypted_token)
+    RefreshToken.find_by(crypted_token:)
   end
 
   private

@@ -1,6 +1,7 @@
 <script lang="ts">
-  import type { PageServerData } from './$houdini'
+  import type { PageServerData } from './$houdini';
 
-  export let data: PageServerData
+  export let data: PageServerData;
 </script>
-{ data.data?.testField }
+
+{data.data?.testField}

@@ -2,14 +2,13 @@
 
 /** @type {import('houdini').ConfigFile} */
 const config = {
-    "watchSchema": {
-        "url": "http://backend:3000/graphql",
-        "interval": 100000
+  watchSchema: {
+    url: 'http://backend:3000/graphql',
+    interval: 100000
+  },
+  plugins: {
+    'houdini-svelte': {}
+  }
+};
 
-    },
-    "plugins": {
-        "houdini-svelte": {}
-    }
-}
-
-export default config
+export default config;

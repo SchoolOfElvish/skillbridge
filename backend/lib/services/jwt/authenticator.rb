@@ -35,11 +35,19 @@ module Services
         return Failure(:invalid_token) unless decoded_token[:jti].present? && decoded_token[:user_id].present?
 
         user = user_model.find(decoded_token.fetch(:user_id))
-        blacklisted = blacklister.blacklisted?(jti: decoded_token[:jti])
-        whitelisted = whitelister.whitelisted?(jti: decoded_token[:jti])
+        blacklisted = blacklisted?(decoded_token)
+        whitelisted = whitelisted?(decoded_token)
         valid_issued_at = valid_issued_at?(user, decoded_token)
 
         return user if !blacklisted && whitelisted && valid_issued_at
+      end
+
+      def blacklisted?(decoded_token)
+        blacklister.blacklisted?(jti: decoded_token[:jti])
+      end
+
+      def whitelisted?(decoded_token)
+        whitelister.whitelisted?(jti: decoded_token[:jti])
       end
 
       def valid_issued_at?(user, decoded_token)
