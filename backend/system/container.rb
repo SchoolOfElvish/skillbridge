@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative '../lib/core/service'
 
 # Load container and inject dependencies

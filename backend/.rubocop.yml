@@ -1,0 +1,8 @@
+require: rubocop-rails
+Style/Documentation:
+  Enabled: false
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+  - bin/*
