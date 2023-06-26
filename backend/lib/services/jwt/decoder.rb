@@ -1,20 +1,23 @@
 # frozen_string_literal: true
 
-module Jwt
-  module Decoder
-    module_function
+module Services
+  module Jwt
+    class Decoder < Core::Service
+      include Deps['services.jwt.secret', 'jwt']
 
-    def decode!(access_token, verify: true)
-      decoded = JWT.decode(access_token, Jwt::Secret.secret, verify, verify_iat: true)[0]
-      raise Errors::Jwt::InvalidToken if decoded.blank?
+      def decode!(access_token, verify: true)
+        decoded = jwt.decode(access_token, secret.secret, verify, verify_iat: true)[0]
 
-      decoded.symbolize_keys
-    end
+        Failure(:invalid_token) if decoded.blank?
 
-    def decode(access_token, verify: true)
-      decode!(access_token, verify:)
-    rescue StandardError
-      nil
+        Success(decoded.symbolize_keys)
+      end
+
+      def decode(access_token, verify: true)
+        decode!(access_token, verify:)
+      rescue StandardError
+        nil
+      end
     end
   end
 end

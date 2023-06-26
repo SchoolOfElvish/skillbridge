@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Deps['services.jwt.authenticator']
+
   before_action :authenticate!
 
   delegate :resolve, to: :container
@@ -10,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    current_user, decoded_token = Jwt::Authenticator.call(
+    current_user, decoded_token = authenticator.call(
       headers: request.headers,
       access_token: params[:access_token]
     )

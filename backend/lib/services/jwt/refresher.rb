@@ -1,24 +1,31 @@
 # frozen_string_literal: true
 
-module Jwt
-  module Refresher
-    module_function
+module Services
+  module Jwt
+    class Refresher
+      include Deps[
+        'services.jwt.blacklister',
+        'services.jwt.issuer',
+        'services.jwt.blacklister',
+      ]
 
-    def refresh!(refresh_token:, decoded_token:, user:)
-      raise Errors::Jwt::MissingToken, token: 'refresh' unless refresh_token.present? || decoded_token.nil?
+      def refresh!(refresh_token:, decoded_token:, user:)
+        return Failure(:missing_token, {token: :refresh}) if unless refresh_token.present? || decoded_token.nil?
 
-      existing_refresh_token = user.refresh_tokens.search_by_token(refresh_token)
-      raise Errors::Jwt::InvalidToken, token: 'refresh' if existing_refresh_token.blank?
+          existing_refresh_token = user.refresh_tokens.search_by_token(refresh_token)
 
-      jti = decoded_token.fetch(:jti)
+          return Failure(:invalid_token, {token: :refresh}) if existing_refresh_token.blank?
 
-      new_access_token, new_refresh_token = Jwt::Issuer.call(user)
-      existing_refresh_token.destroy!
+          jti = decoded_token.fetch(:jti)
 
-      Jwt::Blacklister.blacklist!(jti:, exp: decoded_token.fetch(:exp), user:)
-      Jwt::Whitelister.remove_whitelist!(jti:)
+          new_access_token, new_refresh_token = issuer.call(user)
+          existing_refresh_token.destroy!
 
-      [new_access_token, new_refresh_token]
+          blacklister.blacklist!(jti:, exp: decoded_token.fetch(:exp), user:)
+
+          Success([new_access_token, new_refresh_token])
+        end
+      end
     end
   end
 end
