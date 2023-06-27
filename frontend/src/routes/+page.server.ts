@@ -16,6 +16,6 @@ export const load: PageServerLoad = async (event) => {
   }
 
   return {
-    query: data,
+    query: data
   };
 };
