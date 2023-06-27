@@ -10,7 +10,7 @@ module Services
         user_model: 'persistence.user'
       ]
 
-      def call(headers:, access_token:)
+      def call(headers:, access_token:, ads:)
         token = yield receive_token(headers, access_token)
         decoded_token = yield decoder.decode!(token)
         user = authenticate_user_from_token(decoded_token)
