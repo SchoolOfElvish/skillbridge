@@ -4,4 +4,4 @@
   export let data: PageServerData;
 </script>
 
-{data.data?.testField}
+{data.query?.testField}

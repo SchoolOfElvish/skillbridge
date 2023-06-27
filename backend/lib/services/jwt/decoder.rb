@@ -14,9 +14,7 @@ module Services
       end
 
       def decode(access_token, verify: true)
-        decode!(access_token, verify:)
-      rescue StandardError
-        nil
+        Try[JWT::VerificationError, JWT::DecodeError] { decode!(access_token, verify:) }.to_result
       end
     end
   end

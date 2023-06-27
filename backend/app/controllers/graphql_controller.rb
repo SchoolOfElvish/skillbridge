@@ -4,15 +4,14 @@ class GraphqlController < ApplicationController
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
-  protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
 
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
+      current_user:,
     }
     result = SkillbridgeSchema.execute(query, variables:, context:, operation_name:)
     render json: result
@@ -46,10 +45,13 @@ class GraphqlController < ApplicationController
   end
   # rubocop:enable Metrics/MethodLength
 
-  def handle_error_in_development(_)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def handle_error_in_development(error)
+    logger.error error.message
+    logger.error error.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: :internal_server_error
+    render json: {
+      errors: [{ message: error.message, backtrace: error.backtrace }],
+      data: {}
+    }, status: :internal_server_error
   end
 end

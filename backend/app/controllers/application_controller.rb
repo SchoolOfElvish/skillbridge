@@ -5,19 +5,11 @@ class ApplicationController < ActionController::Base
   include Dry::Monads::Result::Mixin
 
   before_action :authenticate!
-  before_action :reload_container, if: -> { Rails.env.development? }
 
   delegate :resolve, to: :container
 
   def container
     Container
-  end
-
-  # I don't know how to make Rails reload the container automatically
-  # because it uses different zeitwerk autoloader
-  # so I have to do it manually
-  def reload_container
-    Container.autoloader.reload
   end
 
   def authenticate!
@@ -29,9 +21,8 @@ class ApplicationController < ActionController::Base
     case result
     in Success(current_user, decoded_token)
       set_current_user(current_user, decoded_token)
-    in Failure(_)
-      set_current_user(User.last, nil)
-      # head :unauthorized
+    in Failure(error)
+      render json: { errors: [error], data: {} }, status: :unauthorized
     end
   end
 
