@@ -1,12 +1,11 @@
 import { HoudiniClient } from '$houdini';
 import { browser } from '$app/environment';
+import { PUBLIC_CLIENT_HOST_URL, PUBLIC_SERVER_HOST_URL } from '$env/static/public';
 
-const url = browser ? 'http://localhost:3000/graphql' : 'http://backend:3000/graphql';
+const url = browser ? PUBLIC_CLIENT_HOST_URL : PUBLIC_SERVER_HOST_URL;
 
 export default new HoudiniClient({
-  url: url,
-  // uncomment this to configure the network call (for things like authentication)
-  // for more information, please visit here: https://www.houdinigraphql.com/guides/authentication
+  url: `${url}/graphql`,
   fetchParams({ session }) {
     return {
       headers: {

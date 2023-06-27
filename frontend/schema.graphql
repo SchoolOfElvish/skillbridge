@@ -4,15 +4,11 @@ Requires that exactly one field must be supplied and that field must not be `nul
 directive @oneOf on INPUT_OBJECT
 
 type Mutation {
-  """
-  An example field added by the generator
-  """
+  """An example field added by the generator"""
   testField: String!
 }
 
 type Query {
-  """
-  An example field added by the generator
-  """
+  """An example field added by the generator"""
   testField: String!
 }
