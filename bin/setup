@@ -2,12 +2,22 @@
 
 set -e
 
-source ./bin/binfiles/setup_env
+BLUE='\033[0;34m'
+NC='\033[0m'
 
-check_file_exists ./backend/.env
-check_env_file ./backend/.env ./backend/.env.example
+echo Fetching env variables from tawbar...
 
-check_file_exists ./frontend/.env.development
+if tawbar fetch skillbridge/frontend development ; then
+  mv .env ./frontend/.env
+
+  tawbar fetch skillbridge/backend development
+  mv .env ./backend/.env
+
+  echo Done!
+else
+  echo -e "Please run ${BLUE}tawbar login${NC} first"
+  exit 0
+fi
 
 docker compose build
 

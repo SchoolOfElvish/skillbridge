@@ -12,7 +12,7 @@ module Services
 
       def call(headers:, access_token:)
         token = yield receive_token(headers, access_token)
-        decoded_token = yield decoder.decode!(token)
+        decoded_token = yield decoder.decode(token)
         user = authenticate_user_from_token(decoded_token)
 
         return Failure(:unauthorized) if user.blank?

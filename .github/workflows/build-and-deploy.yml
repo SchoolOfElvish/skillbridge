@@ -50,6 +50,10 @@ jobs:
           context: .
           push: true
           file: docker/production/frontend.Dockerfile
+          build-args: |
+            PUBLIC_CLIENT_HOST_URL=${{ vars.PUBLIC_CLIENT_HOST_URL }}
+            PUBLIC_SERVER_HOST_URL=${{ vars.PUBLIC_SERVER_HOST_URL }}
+
           tags: ${{ env.IMAGE_TAG }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

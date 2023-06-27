@@ -4,6 +4,8 @@ require_relative '../lib/core/service'
 
 # Load container and inject dependencies
 class Container < Dry::System::Container
+  use :env, inferrer: -> { ENV.fetch('APP_ENV', 'development').to_sym }
+
   configure do |config|
     config.root = Rails.root
     config.component_dirs.add 'lib'
