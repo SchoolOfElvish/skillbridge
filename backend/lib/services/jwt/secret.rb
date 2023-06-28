@@ -4,7 +4,7 @@ module Services
   module Jwt
     class Secret
       def secret
-        ENV.fetch('JWT_SECRET') { Rails.application.secrets.secret_key_base }
+        ENV.fetch('JWT_SECRET', 'secret')
       end
     end
   end
