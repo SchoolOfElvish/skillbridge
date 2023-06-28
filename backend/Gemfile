@@ -51,16 +51,18 @@ gem 'dotenv-rails', '~> 2.8'
 gem 'dry-monads', '~> 1.6'
 gem 'dry-system', '~> 1.0'
 gem 'pg', '~> 1.5'
-gem 'pry', '~> 0.14.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 3.2'
+  gem 'pry', '~> 0.14.2'
   gem 'rspec-rails', '~> 6.0'
   gem 'rubocop', '~> 1.52'
   gem 'rubocop-rails', '~> 2.20'
+  gem 'rubocop-rspec', '~> 2.22'
+  gem 'shoulda-matchers', '~> 5.3'
 end
 
 group :development do

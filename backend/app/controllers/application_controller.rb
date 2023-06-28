@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+
   include Deps['services.jwt.authenticator']
   include Dry::Monads::Result::Mixin
-
-  before_action :authenticate!
 
   delegate :resolve, to: :container
 

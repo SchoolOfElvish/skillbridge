@@ -2,7 +2,7 @@
 
 module Services
   module Jwt
-    class Encoder
+    class Encoder < Core::Service
       include Deps[
         'secure_random',
         'services.jwt.secret',

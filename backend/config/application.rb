@@ -24,5 +24,8 @@ module Skillbridge
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.hosts << 'backend'
+
+    # config.hostname = URI(ENV.fetch("HOST_URL", "http://localhost:3000")).hostname
+    # routes.default_url_options[:host] = ENV.fetch("HOST_URL", "http://localhost:3000")
   end
 end

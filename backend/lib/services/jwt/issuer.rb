@@ -2,14 +2,14 @@
 
 module Services
   module Jwt
-    class Issuer
+    class Issuer < Core::Service
       include Deps[
         'services.jwt.encoder',
         'services.jwt.whitelister',
       ]
 
       def call(user)
-        access_token, jti, exp = encoder.call(user)
+        access_token, jti, exp = yield encoder.call(user)
         refresh_token = user.refresh_tokens.create!
         whitelister.whitelist!(
           jti:,
@@ -17,7 +17,7 @@ module Services
           user:
         )
 
-        [access_token, refresh_token]
+        Success[access_token, refresh_token]
       end
     end
   end
