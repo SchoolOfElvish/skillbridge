@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
   post '/graphql', to: 'graphql#execute'
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root 'articles#index'
+  scope :api, defaults: { format: :json } do
+    post '/sign-in', to: 'users#sign_in'
+    post '/refresh-token', to: 'users#refresh_token'
+  end
 end

@@ -14,7 +14,7 @@ module Services
       end
 
       def decode(access_token, verify: true)
-        Try[JWT::VerificationError, JWT::DecodeError] { decode!(access_token, verify:) }.to_result
+        Try[JWT::VerificationError, JWT::DecodeError] { yield decode!(access_token, verify:) }.to_result
       end
     end
   end

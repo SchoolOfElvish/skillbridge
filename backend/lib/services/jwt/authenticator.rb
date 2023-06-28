@@ -13,7 +13,7 @@ module Services
       def call(headers:, access_token:)
         token = yield receive_token(headers, access_token)
         decoded_token = yield decoder.decode(token)
-        user = authenticate_user_from_token(decoded_token)
+        user = yield authenticate_user_from_token(decoded_token)
 
         return Failure(:unauthorized) if user.blank?
 
@@ -39,7 +39,9 @@ module Services
         whitelisted = whitelisted?(decoded_token)
         valid_issued_at = valid_issued_at?(user, decoded_token)
 
-        return user if !blacklisted && whitelisted && valid_issued_at
+        return Success(user) if !blacklisted && whitelisted && valid_issued_at
+
+        Failure(:invalid_token)
       end
 
       def blacklisted?(decoded_token)
