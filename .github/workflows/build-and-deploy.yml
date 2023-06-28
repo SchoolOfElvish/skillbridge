@@ -101,5 +101,7 @@ jobs:
           script: |
             cd ~/SchoolOfElvish/skillbridge
             docker login https://ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+            curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_FRONTEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_FRONTEND_API_KEY }}' -o ./frontend/.env
+            curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_BACKEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_BACKEND_API_KEY }}' -o ./backend/.env
             docker compose -f production.yml pull
             docker compose -f production.yml up -d
