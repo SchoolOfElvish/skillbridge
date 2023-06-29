@@ -46,47 +46,45 @@
   const userNavigation: UserNavigationItem[] = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' }
+    { name: 'Sign out', href: '/sign-out' }
   ];
 </script>
 
-<div class="min-h-full">
-  <Disclosure as="nav" class="bg-gray-800" let:open>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <Navigation {navigation}/>
-        <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
-            <button
-              type="button"
-              class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            >
-              <span class="sr-only">View notifications</span>
-              <Icon name="Bell" classes="h-6 w-6" />
-            </button>
-
-            <!-- Profile dropdown -->
-            <Dropdown {userNavigation} user={$userData} />
-          </div>
-        </div>
-        <div class="-mr-2 flex md:hidden">
-          <!-- Mobile menu button -->
-          <DisclosureButton
-            class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+<Disclosure as="nav" class="bg-gray-800" let:open>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <Navigation {navigation}/>
+      <div class="hidden md:block">
+        <div class="ml-4 flex items-center md:ml-6">
+          <button
+            type="button"
+            class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
           >
-            <span class="sr-only">Open main menu</span>
-            {#if !open}
-              <Icon name="Bars3" classes="block h-6 w-6" />
-            {:else}
-              <Icon name="XMark" classes="block h-6 w-6" />
-            {/if}
-          </DisclosureButton>
+            <span class="sr-only">View notifications</span>
+            <Icon name="Bell" classes="h-6 w-6" />
+          </button>
+
+          <!-- Profile dropdown -->
+          <Dropdown {userNavigation} user={$userData} />
         </div>
       </div>
+      <div class="-mr-2 flex md:hidden">
+        <!-- Mobile menu button -->
+        <DisclosureButton
+          class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+        >
+          <span class="sr-only">Open main menu</span>
+          {#if !open}
+            <Icon name="Bars3" classes="block h-6 w-6" />
+          {:else}
+            <Icon name="XMark" classes="block h-6 w-6" />
+          {/if}
+        </DisclosureButton>
+      </div>
     </div>
+  </div>
 
-    <DisclosurePanel class="md:hidden">
-      <Mobile {navigation} {userNavigation} user={$userData} />
-    </DisclosurePanel>
-  </Disclosure>
-</div>
+  <DisclosurePanel class="md:hidden">
+    <Mobile {navigation} {userNavigation} user={$userData} />
+  </DisclosurePanel>
+</Disclosure>

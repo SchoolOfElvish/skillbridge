@@ -1,5 +1,5 @@
 import { setSession } from '$houdini';
-import type { Handle } from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 import { verifyAndDecodeToken } from '$utility/jwt';
 import { setCookie } from '$utility/cookies';
 import { apiRequest } from '$utility/api';
@@ -54,6 +54,13 @@ export const handle: Handle = async ({ event, resolve }) => {
       }
     }
   }
+
+  if (event.url.pathname == '/sign-out') {
+    event.cookies.delete('token');
+    event.cookies.delete('refreshToken');
+    throw redirect(302, '/sign-in');
+  }
+
 
   event.locals.user = {
     isAuthenticated: isAuthenticated,

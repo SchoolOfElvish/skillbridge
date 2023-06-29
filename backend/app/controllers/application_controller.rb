@@ -23,8 +23,10 @@ class ApplicationController < ActionController::Base
     case result
     in Success(current_user, decoded_token)
       set_current_user(current_user, decoded_token)
+    in Failure(JWT::DecodeError => error)
+      render json: { errors: [{ message: 'Unauthorized' }], data: {} }, status: :unauthorized
     in Failure(error)
-      render json: { errors: [error], data: {} }, status: :unauthorized
+      render json: { errors: [{ message: error }], data: {} }, status: :unauthorized
     end
   end
 

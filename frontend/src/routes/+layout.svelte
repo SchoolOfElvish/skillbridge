@@ -1,28 +1,33 @@
 <script lang="ts">
   import '../app.css';
   import Header from '$components/common/Header.svelte';
+  import SkeletonHeader from '$components/common/SkeletonHeader.svelte';
+
   import type { PageData } from './$houdini';
+    import Failure from '$components/common/Alerts/Failure.svelte';
 
   export let data: PageData;
   $: ({ LayoutQuery } = data)
 </script>
 
 {#if $LayoutQuery.fetching}
+  <SkeletonHeader isUserAuthenticated={data.user?.isAuthenticated || false} />
   <div>Loading...</div>
 {:else if $LayoutQuery.errors}
-  <div>Errors: {$LayoutQuery.errors.map((error) => error.message).join(',')}</div>
-{:else if $LayoutQuery.data}
-  <div class="min-h-full">
-    <Header user={$LayoutQuery.data?.viewer} />
-    <header class="bg-white shadow-sm">
-      <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-        <h1 class="text-lg font-semibold leading-6 text-gray-900">Dashboard</h1>
-      </div>
-    </header>
-    <main>
-      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <slot />
-      </div>
-    </main>
+  <SkeletonHeader isUserAuthenticated={data.user?.isAuthenticated || false} />
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <Failure>
+      {#each $LayoutQuery.errors as error}
+        <li>{error.message}</li>
+      {/each}
+    </Failure>
   </div>
+{:else if $LayoutQuery.data}
+  <Header user={$LayoutQuery.data?.viewer} />
 {/if}
+
+<main>
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</main>
