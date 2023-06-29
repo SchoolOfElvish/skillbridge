@@ -33,4 +33,4 @@ RUN SECRET_KEY_BASE=`bundle exec rake secret` bundle exec rake assets:precompile
 
 ENTRYPOINT ["./bin/docker-entrypoint.sh"]
 
-CMD ["./bin/rails", "server"]
+CMD ["./bin/rails", "server", "-p", "3000" ]

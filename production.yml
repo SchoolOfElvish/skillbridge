@@ -8,7 +8,7 @@ services:
       - ./backend/.env
     labels:
       - traefik.enable=true
-      - traefik.http.services.backend.loadbalancer.server.port=80
+      - traefik.http.services.backend.loadbalancer.server.port=3000
       - traefik.http.routers.backend.rule=Host(`skillbridge.me`) && PathPrefix(`/api`)
       - traefik.http.routers.backend.entrypoints=websecure
       - traefik.http.routers.backend.tls.certresolver=le
