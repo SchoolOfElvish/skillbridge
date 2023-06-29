@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
+    return if introspection_query? && Rails.env.development?
+
     result = authenticator.call(
       headers: request.headers,
       access_token: params[:access_token]
@@ -29,5 +31,9 @@ class ApplicationController < ActionController::Base
   def set_current_user(current_user, decoded_token)
     @current_user = current_user
     @decoded_token = decoded_token
+  end
+
+  def introspection_query?
+    request.headers['X-Introspection'].present?
   end
 end

@@ -15,5 +15,11 @@ module Types
     def test_field
       'Hello World!'
     end
+
+    field :viewer, Types::UserType, null: false
+
+    def viewer
+      context[:current_user]
+    end
   end
 end
