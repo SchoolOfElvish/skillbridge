@@ -18,6 +18,18 @@ on:
       vps-user:
         description: "Username from VPS server"
         required: true
+      tawbar-frontend-id:
+        description: "Tawbar frontend id"
+        required: true
+      tawbar-frontend-key:
+        description: "Tawbar frontend key"
+        required: true
+      tawbar-backend-id:
+        description: "Tawbar backend id"
+        required: true
+      tawbar-backend-key:
+        description: "Tawbar backend key"
+        required: true
 
 permissions:
   id-token: write
@@ -40,10 +52,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-      - name: Fetch secrets from tawbar
-        run: |
-          curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_FRONTEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_FRONTEND_API_KEY }}' -o ./frontend/.env
-          curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_BACKEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_BACKEND_API_KEY }}' -o ./backend/.env
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
@@ -73,10 +81,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-      - name: Fetch secrets from tawbar
-        run: |
-          curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_FRONTEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_FRONTEND_API_KEY }}' -o ./frontend/.env
-          curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_BACKEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_BACKEND_API_KEY }}' -o ./backend/.env
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
@@ -101,7 +105,7 @@ jobs:
           script: |
             cd ~/SchoolOfElvish/skillbridge
             docker login https://ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-            curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_FRONTEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_FRONTEND_API_KEY }}' -o ./frontend/.env
-            curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_BACKEND_PROJECT_ID }}/production -H 'Authorization: ${{ secrets.TAWBAR_BACKEND_API_KEY }}' -o ./backend/.env
+            curl https://api.tawbar.com/projects/v1/${{ secrets.tawbar-frontend-id }}/production -H 'Authorization: ${{ secrets.tawbar-frontend-key }}' -o ./frontend/.env
+            curl https://api.tawbar.com/projects/v1/${{ secrets.tawbar-backend-id }}/production -H 'Authorization: ${{ secrets.tawbar-backend-key }}' -o ./backend/.env
             docker compose -f production.yml pull
             docker compose -f production.yml up -d

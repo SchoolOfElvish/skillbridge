@@ -29,6 +29,10 @@ jobs:
     secrets:
       vps-password: ${{ secrets.VPS_PASSWORD }}
       vps-user: ${{ secrets.VPS_USERNAME }}
+      tawbar-frontend-id: ${{ secrets.TAWBAR_FRONTEND_PROJECT_ID }}
+      tawbar-frontend-key: ${{ secrets.TAWBAR_FRONTEND_API_KEY }}
+      tawbar-backend-id: ${{ secrets.TAWBAR_BACKEND_PROJECT_ID }}
+      tawbar-backend-key: ${{ secrets.TAWBAR_BACKEND_API_KEY }}
     with:
       environment: staging
       version: ${{ needs.setup.outputs.version }}
