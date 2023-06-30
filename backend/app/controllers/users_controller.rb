@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def sign_in
     case login_user(params)
     in Success[token, refresh_token]
-      render json: { token:, refreshToken: }
+      render json: { token:, refreshToken: refresh_token }
     in Failure[:wrong_password]
       render_failure('Wrong password', :unauthorized)
     in Failure[:user_not_found]

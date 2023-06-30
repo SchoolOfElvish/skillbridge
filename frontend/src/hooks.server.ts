@@ -1,49 +1,24 @@
 import { setSession } from '$houdini';
-import { redirect, type Handle } from '@sveltejs/kit';
-import { verifyAndDecodeToken } from '$utility/jwt';
-import { setCookie } from '$utility/cookies';
-import { apiRequest } from '$utility/api';
+import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
 import { to } from '$utility/routes';
+import { handleTokenVerification } from '$utility/api';
 
-type ResponseData = {
-  token: string;
-  refreshToken: string;
-};
+function handleSignOut(event: RequestEvent): void {
+  event.cookies.delete('token');
+  event.cookies.delete('refreshToken');
+  throw redirect(302, to.signIn());
+}
 
 export const handle: Handle = async ({ event, resolve }) => {
   const token = event.cookies.get('token');
   const refreshToken = event.cookies.get('refreshToken');
 
   if (token) {
-    const decodedToken = verifyAndDecodeToken(token);
-    if (!decodedToken) {
-      if (refreshToken) {
-        try {
-          const body = await apiRequest<ResponseData>(event.fetch, to.api.refreshToken(), {
-            refreshToken,
-            token: token
-          });
-
-          if (body.token && body.refreshToken) {
-            setCookie(event.cookies, 'token', body.token, false);
-            setCookie(event.cookies, 'refreshToken', body.refreshToken, false);
-          } else {
-            event.cookies.delete('token');
-            event.cookies.delete('refreshToken');
-          }
-        } catch (error) {
-          console.error('Failed to refresh token:', error);
-          event.cookies.delete('token');
-          event.cookies.delete('refreshToken');
-        }
-      }
-    }
+    await handleTokenVerification(event, token, refreshToken);
   }
 
-  if (event.url.pathname == '/sign-out') {
-    event.cookies.delete('token');
-    event.cookies.delete('refreshToken');
-    throw redirect(302, '/sign-in');
+  if (event.url.pathname === '/sign-out') {
+    handleSignOut(event);
   }
 
   // set the session information for this event
@@ -52,3 +27,4 @@ export const handle: Handle = async ({ event, resolve }) => {
   // pass the event onto the default handle
   return await resolve(event);
 };
+
