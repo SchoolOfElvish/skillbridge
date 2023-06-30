@@ -3,48 +3,36 @@ import { redirect, type Handle } from '@sveltejs/kit';
 import { verifyAndDecodeToken } from '$utility/jwt';
 import { setCookie } from '$utility/cookies';
 import { apiRequest } from '$utility/api';
+import { to } from '$utility/routes';
 
 type ResponseData = {
   token: string;
-  refresh_token: string;
+  refreshToken: string;
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
   const token = event.cookies.get('token');
   const refreshToken = event.cookies.get('refreshToken');
 
-  const user = {
-    token: token,
-    refreshToken: refreshToken
-  };
-
-  let isAuthenticated = false;
-  let id = null;
-
   if (token) {
     const decodedToken = verifyAndDecodeToken(token);
-    if (decodedToken) {
-      isAuthenticated = true;
-      id = decodedToken.id;
-    } else {
+    if (!decodedToken) {
       if (refreshToken) {
-        const body = await apiRequest<ResponseData>(event.fetch, '/api/refresh-token', {
-          refreshToken,
-          token: token
-        });
+        try {
+          const body = await apiRequest<ResponseData>(event.fetch, to.api.refreshToken(), {
+            refreshToken,
+            token: token
+          });
 
-        if (body.token) {
-          isAuthenticated = true;
-          const decodedToken = verifyAndDecodeToken(body.token);
-          if (decodedToken) {
-            id = decodedToken.id;
+          if (body.token && body.refreshToken) {
+            setCookie(event.cookies, 'token', body.token, false);
+            setCookie(event.cookies, 'refreshToken', body.refreshToken, false);
+          } else {
+            event.cookies.delete('token');
+            event.cookies.delete('refreshToken');
           }
-
-          setCookie(event.cookies, 'token', body.token, false);
-          setCookie(event.cookies, 'refreshToken', body.refresh_token, false);
-          user.token = body.token;
-          user.refreshToken = body.refresh_token;
-        } else {
+        } catch (error) {
+          console.error('Failed to refresh token:', error);
           event.cookies.delete('token');
           event.cookies.delete('refreshToken');
         }
@@ -57,11 +45,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     event.cookies.delete('refreshToken');
     throw redirect(302, '/sign-in');
   }
-
-  event.locals.user = {
-    isAuthenticated: isAuthenticated,
-    id: id
-  };
 
   // set the session information for this event
   setSession(event, { user: { token, refreshToken } });
