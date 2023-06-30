@@ -3,7 +3,6 @@
   import SkeletonHeader from '$components/common/SkeletonHeader.svelte';
 
   import type { PageData } from './$houdini';
-  import Failure from '$components/common/Alerts/Failure.svelte';
 
   export let data: PageData;
   $: ({ LayoutQuery } = data)
@@ -15,11 +14,11 @@
 {:else if $LayoutQuery.errors}
   <SkeletonHeader isUserAuthenticated={true} />
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-    <Failure>
+    <ul>
       {#each $LayoutQuery.errors as error}
         <li>{error.message}</li>
       {/each}
-    </Failure>
+    </ul>
   </div>
 {:else if $LayoutQuery.data}
   <Header user={$LayoutQuery.data?.viewer} />

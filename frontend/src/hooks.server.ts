@@ -58,14 +58,13 @@ export const handle: Handle = async ({ event, resolve }) => {
     throw redirect(302, '/sign-in');
   }
 
-
   event.locals.user = {
     isAuthenticated: isAuthenticated,
     id: id
   };
 
   // set the session information for this event
-  setSession(event, { user });
+  setSession(event, { user: { token, refreshToken } });
 
   // pass the event onto the default handle
   return await resolve(event);
