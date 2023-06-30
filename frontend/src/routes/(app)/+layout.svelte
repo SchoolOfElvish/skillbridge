@@ -2,9 +2,9 @@
   import Header from '$components/common/Header.svelte';
   import SkeletonHeader from '$components/common/SkeletonHeader.svelte';
 
-  import type { PageData } from './$houdini';
+  import type { LayoutData } from './$houdini';
+  export let data: LayoutData;
 
-  export let data: PageData;
   $: ({ LayoutQuery } = data)
 </script>
 

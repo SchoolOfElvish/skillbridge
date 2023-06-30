@@ -21,6 +21,7 @@
   import Icon from '$components/icons/Icon.svelte';
   import Mobile from './Header/Mobile.svelte';
   import Navigation from './Header/Navigation.svelte';
+  import { to } from '$utility/routes';
 
   import { fragment, graphql, type Header_user } from '$houdini';
     import Dropdown from './Header/Dropdown.svelte';
@@ -36,17 +37,12 @@
   `);
 
   const navigation: NavigationItem[] = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Reports', href: '#', current: false }
+    { name: 'Dashboard', href: to.root(), current: false },
   ];
 
   const userNavigation: UserNavigationItem[] = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '/sign-out' }
+    { name: 'Settings', href: to.settings() },
+    { name: 'Sign out', href: to.signOut() }
   ];
 </script>
 
