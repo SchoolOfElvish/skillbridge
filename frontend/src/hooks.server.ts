@@ -24,12 +24,9 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (token) {
     const decodedToken = verifyAndDecodeToken(token);
     if (decodedToken) {
-      console.log('decodedToken', decodedToken);
       isAuthenticated = true;
       id = decodedToken.id;
     } else {
-      console.log('no decodedToken');
-      console.log('refreshToken', refreshToken);
       if (refreshToken) {
         const body = await apiRequest<ResponseData>(event.fetch, '/api/refresh-token', {
           refreshToken,
