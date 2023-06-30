@@ -1,39 +1,32 @@
 <script lang="ts">
   import Icon from '$components/icons/Icon.svelte';
-  type OperationStatus = 'success' | 'failure' | 'incompleted';
+  import type { PageData } from './$houdini';
+  import type { SettingsPageQuery$result as QueryResult } from '$houdini';
 
-  let {
-    first_name: firstName,
-    last_name: lastName,
-    email,
-    birthdate,
-    about_info: aboutInfo
-  } = {
-      first_name: 'adsasd',
-      last_name: 'asdasd',
-      email: 'asdasd',
-      birthdate: 'asdasd',
-      about_info: 'asdasd'
+  type User = QueryResult['viewer'];
+
+  export let data: PageData;
+  $: ({ SettingsPageQuery } = data);
+
+  let birthdate = '2020-01-01'
+
+  let { firstName, lastName, email, about }: Omit<User, 'birthdate'> = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    about: '',
+  };
+
+  let dataLoaded = false;
+
+  $: if ($SettingsPageQuery.data?.viewer && !dataLoaded) {
+    const { viewer } = $SettingsPageQuery.data;
+    firstName = viewer.firstName;
+    lastName = viewer.lastName;
+    email = viewer.email;
+    about = viewer.about || '';
+    dataLoaded = true;
   }
-  /* let status: OperationStatus = 'incompleted'; */
-  /* let errors: string[]; */
-  /**/
-  /* const submitUserData = async () => { */
-  /*   const result = await put('/v1/users/me', { */
-  /*     first_name: firstName, */
-  /*     last_name: lastName, */
-  /*     birthdate: birthdate, */
-  /*     about_info: aboutInfo */
-  /*   }); */
-  /**/
-  /*   result */
-  /*     .error(422, async (error) => { */
-  /*       errors = JSON.parse(error.message).error; */
-  /*       status = 'failure'; */
-  /*       return error; */
-  /*     }) */
-  /*     .res(() => (status = 'success')); */
-  /* }; */
 </script>
 
 <!-- https://tailwindui.com/components/application-ui/forms/form-layouts -->
@@ -175,7 +168,7 @@
               >
               <div class="mt-1">
                 <textarea
-                  bind:value={aboutInfo}
+                  bind:value={about}
                   id="bio"
                   name="bio"
                   class=" shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"

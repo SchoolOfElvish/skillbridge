@@ -3,6 +3,9 @@ Requires that exactly one field must be supplied and that field must not be `nul
 """
 directive @oneOf on INPUT_OBJECT
 
+"""An ISO 8601-encoded date"""
+scalar ISO8601Date
+
 """An ISO 8601-encoded datetime"""
 scalar ISO8601DateTime
 
@@ -36,12 +39,15 @@ type Query {
 }
 
 type User implements Node {
+  about: String
+  birthdate: ISO8601Date
   createdAt: ISO8601DateTime!
   email: String!
+  firstName: String!
 
   """ID of the object."""
   id: ID!
   imageUrl: String!
-  name: String!
+  lastName: String!
   updatedAt: ISO8601DateTime!
 }

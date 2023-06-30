@@ -11,6 +11,17 @@ const config = {
   },
   plugins: {
     'houdini-svelte': {}
+  },
+  scalars: {
+    ISO8601Date: {
+      type: 'Date',
+      unmarshal(val) {
+        return val ? new Date(val) : null
+      },
+      marshal(date) {
+        return date && date.getTime()
+      }
+    }
   }
 };
 

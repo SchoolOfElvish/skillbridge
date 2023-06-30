@@ -11,7 +11,7 @@
     $: userData = fragment(user, graphql`
       fragment Mobile_user on User {
         imageUrl
-        name
+        firstName
         email
       }
     `);
