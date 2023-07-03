@@ -5,8 +5,9 @@ import { apiRequest } from '$utility/api';
 import { to } from '$utility/routes';
 
 type ResponseData = {
-  token: string;
-  refresh_token: string;
+  token?: string;
+  refreshToken?: string;
+  error?: string;
 };
 
 export const actions = {
@@ -15,12 +16,27 @@ export const actions = {
     const email = form.get('email');
     const password = form.get('password');
     const remember = Boolean(form.get('remember-me')) == true;
+    let body;
 
-    const body = await apiRequest<ResponseData>(fetch, to.signIn(), { email, password });
+    try {
+      body = await apiRequest<ResponseData>(fetch, to.api.signIn(), { email, password });
+      console.log(body);
+    } catch (error) {
+      console.error('Failed to sign in:', error);
+    }
 
-    setCookie(cookies, 'token', body.token, remember);
-    setCookie(cookies, 'refreshToken', body.refresh_token, remember);
+    if (body?.token && body?.refreshToken) {
+      setCookie(cookies, 'token', body.token, remember);
+      setCookie(cookies, 'refreshToken', body.refreshToken, remember);
 
-    throw redirect(302, to.root());
+      throw redirect(302, to.root());
+    }
+
+    if (body?.error) {
+      return {
+        status: 400,
+        body: body.error
+      };
+    }
   }
 } satisfies Actions;

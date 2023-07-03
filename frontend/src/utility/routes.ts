@@ -10,6 +10,7 @@ export type Routes = {
   settings: Route;
   api: {
     refreshToken: Route;
+    signIn: Route;
   };
 };
 
@@ -21,5 +22,6 @@ export const to: Routes = {
   settings: buildPath('/settings'),
   api: {
     refreshToken: buildPath('/api/refresh-token'),
+    signIn: buildPath('/api/sign-in'),
   }
 };
