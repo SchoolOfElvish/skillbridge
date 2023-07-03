@@ -1,6 +1,5 @@
-query RootQuery {
+query LayoutQuery {
   viewer {
     ...Layout_viewer
   }
-  testField
 }
