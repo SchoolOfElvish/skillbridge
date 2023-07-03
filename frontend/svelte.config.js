@@ -13,7 +13,7 @@ const config = {
       $houdini: './$houdini',
       $components: './src/components',
       $utility: './src/utility',
-      $features: './src/features',
+      $features: './src/features'
     }
   }
 };

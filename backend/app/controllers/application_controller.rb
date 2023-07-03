@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     Container
   end
 
+  # rubocop:disable Metrics/MethodLength
   def authenticate!
     return if introspection_query? && Rails.env.development?
 
@@ -29,6 +30,7 @@ class ApplicationController < ActionController::Base
       render json: { errors: [{ message: error }], data: {} }, status: :unauthorized
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def set_current_user(current_user, decoded_token)
     @current_user = current_user

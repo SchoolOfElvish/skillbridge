@@ -12,7 +12,7 @@
 {#if $SettingsPageQuery.fetching}
   Loading...
 {:else if viewer}
-<Settings viewer={viewer} />
+  <Settings {viewer} />
 {:else}
   Something went wrong
 {/if}

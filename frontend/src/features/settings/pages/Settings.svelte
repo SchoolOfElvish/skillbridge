@@ -2,7 +2,7 @@
   import Icon from '$components/icons/Icon.svelte';
   import Input from '$features/settings/components/Input.svelte';
   import DatePicker from '$features/settings/components/Datepicker.svelte';
-  import { formatDate } from '$utility/formatDate'
+  import { formatDate } from '$utility/formatDate';
 
   import { fragment, graphql } from '$houdini';
 
@@ -29,7 +29,7 @@
     firstName: '',
     lastName: '',
     email: '',
-    about: '',
+    about: ''
   };
 
   let isDataLoaded = false;
@@ -39,7 +39,7 @@
     lastName = $user.lastName;
     email = $user.email;
     about = $user.about || '';
-    birthdate = $user.birthdate && formatDate($user.birthdate) || '';
+    birthdate = ($user.birthdate && formatDate($user.birthdate)) || '';
     isDataLoaded = true;
   }
 </script>
@@ -75,9 +75,27 @@
           </div>
 
           <div class="grid grid-cols-6 gap-6">
-            <Input label="First Name" id="first-name" name="first-name" bind:value={firstName} autocomplete="given-name" />
-            <Input label="Last Name" id="last-name" name="last-name" bind:value={lastName} autocomplete="family-name" />
-            <Input label="Email Address" id="email-address" name="email-address" bind:value={email} autocomplete="email" />
+            <Input
+              label="First Name"
+              id="first-name"
+              name="first-name"
+              bind:value={firstName}
+              autocomplete="given-name"
+            />
+            <Input
+              label="Last Name"
+              id="last-name"
+              name="last-name"
+              bind:value={lastName}
+              autocomplete="family-name"
+            />
+            <Input
+              label="Email Address"
+              id="email-address"
+              name="email-address"
+              bind:value={email}
+              autocomplete="email"
+            />
             <DatePicker
               label="Birthdate"
               id="party"

@@ -22,6 +22,6 @@ export const to: Routes = {
   settings: buildPath('/settings'),
   api: {
     refreshToken: buildPath('/api/refresh-token'),
-    signIn: buildPath('/api/sign-in'),
+    signIn: buildPath('/api/sign-in')
   }
 };

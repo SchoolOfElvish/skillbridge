@@ -23,7 +23,11 @@ export const apiRequest = async <T>(
   return (await response.json()) as T;
 };
 
-export async function handleTokenVerification(event: RequestEvent, token: string, refreshToken: string | undefined): Promise<void> {
+export async function handleTokenVerification(
+  event: RequestEvent,
+  token: string,
+  refreshToken: string | undefined
+): Promise<void> {
   const decodedToken = verifyAndDecodeToken(token);
   if (!decodedToken && refreshToken) {
     try {

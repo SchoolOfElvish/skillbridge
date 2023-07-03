@@ -1,11 +1,5 @@
 <script lang="ts">
-  import {
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    Transition
-  } from '@rgossiaux/svelte-headlessui';
+  import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@rgossiaux/svelte-headlessui';
   import { fragment, graphql, type Dropdown_user } from '$houdini';
   import type { UserNavigationItem } from '$components/common/Header.svelte';
 
@@ -13,11 +7,14 @@
 
   export let userNavigation: UserNavigationItem[];
 
-  $: userData = fragment(user, graphql`
-    fragment Dropdown_user on User {
-      imageUrl
-    }
-  `);
+  $: userData = fragment(
+    user,
+    graphql`
+      fragment Dropdown_user on User {
+        imageUrl
+      }
+    `
+  );
 </script>
 
 <Menu as="div" class="relative ml-3">

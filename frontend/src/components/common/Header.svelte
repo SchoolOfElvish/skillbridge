@@ -9,36 +9,32 @@
     name: string;
     href: string;
   };
-
 </script>
 
 <script lang="ts">
-  import {
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-  } from '@rgossiaux/svelte-headlessui';
+  import { Disclosure, DisclosureButton, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
   import Icon from '$components/icons/Icon.svelte';
   import Mobile from './Header/Mobile.svelte';
   import Navigation from './Header/Navigation.svelte';
   import { to } from '$utility/routes';
 
   import { fragment, graphql, type Header_user } from '$houdini';
-    import Dropdown from './Header/Dropdown.svelte';
+  import Dropdown from './Header/Dropdown.svelte';
 
   export let user: Header_user;
 
-  $: userData = fragment(user, graphql`
-    fragment Header_user on User {
-      imageUrl
-      ...Mobile_user
-      ...Dropdown_user
-    }
-  `);
+  $: userData = fragment(
+    user,
+    graphql`
+      fragment Header_user on User {
+        imageUrl
+        ...Mobile_user
+        ...Dropdown_user
+      }
+    `
+  );
 
-  const navigation: NavigationItem[] = [
-    { name: 'Dashboard', href: to.root(), current: false },
-  ];
+  const navigation: NavigationItem[] = [{ name: 'Dashboard', href: to.root(), current: false }];
 
   const userNavigation: UserNavigationItem[] = [
     { name: 'Settings', href: to.settings() },
@@ -49,7 +45,7 @@
 <Disclosure as="nav" class="bg-gray-800" let:open>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-      <Navigation {navigation}/>
+      <Navigation {navigation} />
       <div class="hidden md:block">
         <div class="ml-4 flex items-center md:ml-6">
           <button

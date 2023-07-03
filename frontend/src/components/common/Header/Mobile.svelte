@@ -1,20 +1,23 @@
 <script lang="ts">
-    import Icon from "$components/icons/Icon.svelte";
-    import { DisclosureButton } from "@rgossiaux/svelte-headlessui";
-    import type { NavigationItem, UserNavigationItem } from "../Header.svelte";
-    import { fragment, graphql, type Mobile_user } from '$houdini';
+  import Icon from '$components/icons/Icon.svelte';
+  import { DisclosureButton } from '@rgossiaux/svelte-headlessui';
+  import type { NavigationItem, UserNavigationItem } from '../Header.svelte';
+  import { fragment, graphql, type Mobile_user } from '$houdini';
 
-    export let navigation: NavigationItem[] = []
-    export let userNavigation: UserNavigationItem[] = []
-    export let user: Mobile_user;
+  export let navigation: NavigationItem[] = [];
+  export let userNavigation: UserNavigationItem[] = [];
+  export let user: Mobile_user;
 
-    $: userData = fragment(user, graphql`
+  $: userData = fragment(
+    user,
+    graphql`
       fragment Mobile_user on User {
         imageUrl
         firstName
         email
       }
-    `);
+    `
+  );
 </script>
 
 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
@@ -37,7 +40,7 @@
       <img class="h-10 w-10 rounded-full" src={$userData.imageUrl} alt="" />
     </div>
     <div class="ml-3">
-      <div class="text-base font-medium text-white">{$userData.name}</div>
+      <div class="text-base font-medium text-white">{$userData.firstName}</div>
       <div class="text-sm font-medium text-gray-400">{$userData.email}</div>
     </div>
     <button

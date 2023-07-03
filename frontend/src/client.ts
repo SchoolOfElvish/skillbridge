@@ -14,7 +14,7 @@ export default new HoudiniClient({
     // the function to call
     error: (errors) => {
       if (errors[0].message === 'Not authenticated') {
-        return redirect(302, '/sign-in')
+        return redirect(302, '/sign-in');
       }
     }
   },

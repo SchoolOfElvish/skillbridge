@@ -6,7 +6,7 @@ const config = {
     url: 'http://backend:3000/graphql',
     interval: 100000,
     headers: {
-      'X-Introspection': 'true',
+      'X-Introspection': 'true'
     }
   },
   plugins: {
@@ -16,10 +16,10 @@ const config = {
     ISO8601Date: {
       type: 'Date',
       unmarshal(val) {
-        return val ? new Date(val) : null
+        return val ? new Date(val) : null;
       },
       marshal(val) {
-        return val ? val.toISOString() : null
+        return val ? val.toISOString() : null;
       }
     }
   }

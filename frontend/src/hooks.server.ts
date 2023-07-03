@@ -27,4 +27,3 @@ export const handle: Handle = async ({ event, resolve }) => {
   // pass the event onto the default handle
   return await resolve(event);
 };
-

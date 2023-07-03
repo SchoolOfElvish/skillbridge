@@ -6,11 +6,14 @@
 
   export let viewer: Layout_viewer | undefined;
 
-  $: user = fragment(viewer, graphql`
-    fragment Layout_viewer on User {
-      ...Header_user
-    }
-  `);
+  $: user = fragment(
+    viewer,
+    graphql`
+      fragment Layout_viewer on User {
+        ...Header_user
+      }
+    `
+  );
 </script>
 
 {#if $user}

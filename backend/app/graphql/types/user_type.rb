@@ -21,15 +21,15 @@ module Types
     end
 
     def first_name
-      "Nick"
+      'Nick'
     end
 
     def last_name
-      "Pupko"
+      'Pupko'
     end
 
     def birthdate
-      "1998-10-10"
+      '1998-10-10'
     end
 
     def about

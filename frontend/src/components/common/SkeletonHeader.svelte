@@ -9,7 +9,6 @@
     name: string;
     href: string;
   };
-
 </script>
 
 <script lang="ts">
@@ -30,7 +29,7 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       {#if isUserAuthenticated}
-        <Navigation {navigation}/>
+        <Navigation {navigation} />
       {:else}
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">

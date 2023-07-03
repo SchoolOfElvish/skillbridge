@@ -4,4 +4,4 @@ export const formatDate = (date: Date): string => {
   const day = date.getDate().toString().padStart(2, '0');
 
   return `${year}-${month}-${day}`;
-}
+};
