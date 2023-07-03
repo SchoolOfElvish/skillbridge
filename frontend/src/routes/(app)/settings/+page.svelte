@@ -17,15 +17,15 @@
     about: '',
   };
 
-  let dataLoaded = false;
+  $: {
+    const viewer = $SettingsPageQuery.data?.viewer;
 
-  $: if ($SettingsPageQuery.data?.viewer && !dataLoaded) {
-    const { viewer } = $SettingsPageQuery.data;
-    firstName = viewer.firstName;
-    lastName = viewer.lastName;
-    email = viewer.email;
-    about = viewer.about || '';
-    dataLoaded = true;
+    if (viewer) {
+      firstName = viewer.firstName;
+      lastName = viewer.lastName;
+      email = viewer.email;
+      about = viewer.about || '';
+    }
   }
 </script>
 
