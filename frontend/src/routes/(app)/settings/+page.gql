@@ -1,9 +1,0 @@
-query SettingsPageQuery {
-  viewer {
-    email
-    firstName
-    lastName
-    birthdate
-    about
-  }
-}

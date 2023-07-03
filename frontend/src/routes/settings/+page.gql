@@ -1,0 +1,6 @@
+query SettingsPageQuery {
+  viewer {
+    ...Settings_viewer
+    ...Layout_viewer
+  }
+}

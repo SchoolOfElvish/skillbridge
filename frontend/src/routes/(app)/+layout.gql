@@ -1,6 +1,0 @@
-query LayoutQuery {
-  viewer {
-    ...Header_user
-  }
-  testField
-}

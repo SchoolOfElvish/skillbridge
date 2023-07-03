@@ -18,8 +18,8 @@ const config = {
       unmarshal(val) {
         return val ? new Date(val) : null
       },
-      marshal(date) {
-        return date && date.getTime()
+      marshal(val) {
+        return val ? val.toISOString() : null
       }
     }
   }
