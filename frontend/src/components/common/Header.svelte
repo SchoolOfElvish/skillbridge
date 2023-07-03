@@ -27,7 +27,6 @@
     user,
     graphql`
       fragment Header_user on User {
-        imageUrl
         ...Mobile_user
         ...Dropdown_user
       }
