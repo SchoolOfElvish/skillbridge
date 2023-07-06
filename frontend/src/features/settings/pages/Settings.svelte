@@ -14,6 +14,7 @@
     viewer,
     graphql`
       fragment Settings_viewer on User {
+        id
         email
         firstName
         lastName
@@ -43,16 +44,28 @@
     isDataLoaded = true;
   }
 
+  const actionMutation = graphql(`
+    mutation SettingsPageUserUpdate($firstName: String!) {
+      updateUser(input: {
+        userId: "Z2lkOi8vc2tpbGxicmlkZ2UvVXNlci84NQ",
+        firstName: $firstName,
+      }) {
+        user {
+          lastName
+          firstName
+        }
+      }
+    }
+  `)
 
-/*   mutation { */
-/*   updateUser(input: { userId: "Z2lkOi8vc2tpbGxicmlkZ2UvVXNlci84NQ", lastName: "Pupko" }) { */
-/*     user { */
-/*       id */
-/*       lastName */
-/*       firstName */
-/*     } */
-/*   } */
-/* } */
+  const submit = async () => {
+    const { data } = await actionMutation.mutate({
+      userId: $user.id,
+      firstName
+    });
+
+    console.log(data);
+  };
 </script>
 
 <!-- https://tailwindui.com/components/application-ui/forms/form-layouts -->
@@ -138,6 +151,7 @@
 
         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
           <button
+            on:click|preventDefault={submit}
             class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             {`pages.users.me.save`}
