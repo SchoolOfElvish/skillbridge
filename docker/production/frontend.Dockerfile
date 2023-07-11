@@ -1,9 +1,6 @@
 FROM node:20-alpine as BUILD_IMAGE
-WORKDIR /frontend
-COPY frontend/package.json frontend/pnpm-lock.yaml ./
 
-RUN npm install -g pnpm@8.6.3
-RUN pnpm install --frozen-lockfile
+WORKDIR /frontend
 
 COPY frontend .
 
@@ -16,10 +13,11 @@ ENV PUBLIC_SERVER_HOST_URL=$PUBLIC_SERVER_HOST_URL
 ENV JWT_SECRET=$JWT_SECRET
 
 # build
-RUN pnpm build
+RUN yarn install
+RUN yarn build
 
 # remove dev dependencies
-RUN pnpm prune --production
+RUN yarn install --production --frozen-lockfile
 
 FROM node:20-alpine
 WORKDIR /frontend
@@ -27,8 +25,7 @@ WORKDIR /frontend
 COPY --from=BUILD_IMAGE /frontend/package.json .
 COPY --from=BUILD_IMAGE /frontend/build .
 
-RUN npm install -g pnpm@8.6.3
-RUN pnpm install --production
-RUN pnpm add dotenv
+RUN yarn --prod
+RUN yarn add dotenv
 
 CMD node -r dotenv/config index.js

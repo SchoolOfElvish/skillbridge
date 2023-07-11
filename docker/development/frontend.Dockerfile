@@ -13,8 +13,6 @@ RUN set -eux; \
     mkdir -p /frontend/node_modules; \
     chown -R frontend:frontend /frontend
 
-RUN npm install -g pnpm@8.6.3
-
 USER frontend
 
 WORKDIR /frontend

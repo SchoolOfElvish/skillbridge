@@ -24,4 +24,4 @@ docker compose build
 bin/backend/bundle install
 bin/backend/rails db:prepare
 
-bin/frontend/pnpm install
+bin/frontend/yarn install
