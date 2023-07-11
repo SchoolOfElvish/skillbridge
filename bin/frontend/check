@@ -2,5 +2,5 @@
 
 set -e
 
-command="docker compose run --rm frontend /bin/bash -c 'yarn check ${@}'"
+command="docker compose run --rm frontend /bin/bash -c 'yarn run check ${@}'"
 eval $command
