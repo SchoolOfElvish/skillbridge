@@ -40,7 +40,7 @@ services:
     volumes:
       - ./frontend:/frontend:cached
       - node_modules:/frontend/node_modules
-    command: pnpm dev --port 3001 --host 0.0.0.0
+    command: bun dev --port 3001 --host 0.0.0.0
     ports:
       - "3001:3001"
 
