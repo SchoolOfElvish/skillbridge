@@ -1,4 +1,4 @@
-FROM node:20-buster
+FROM oven/bun:1
 
 ARG UID=1000
 
@@ -12,8 +12,6 @@ RUN set -eux; \
     fi; \
     mkdir -p /frontend/node_modules; \
     chown -R frontend:frontend /frontend
-
-RUN npm install -g pnpm@latest
 
 USER frontend
 
