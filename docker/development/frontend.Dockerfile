@@ -5,8 +5,8 @@ ARG UID=1000
 RUN set -eux; \
     if [ "${UID}" = "1000" ]; then \
       # this image already has "node" user with UID 1000
-      usermod -l frontend -s /bin/bash node; \
-      groupmod -n frontend node; \
+      usermod -l frontend -s /bin/bash bun; \
+      groupmod -n frontend bun; \
     else \
       useradd -s /bin/bash -u ${UID} -m frontend; \
     fi; \

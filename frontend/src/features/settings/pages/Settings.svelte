@@ -46,17 +46,14 @@
 
   const actionMutation = graphql(`
     mutation SettingsPageUserUpdate($firstName: String!) {
-      updateUser(input: {
-        userId: "Z2lkOi8vc2tpbGxicmlkZ2UvVXNlci84NQ",
-        firstName: $firstName,
-      }) {
+      updateUser(input: { userId: "Z2lkOi8vc2tpbGxicmlkZ2UvVXNlci84NQ", firstName: $firstName }) {
         user {
           lastName
           firstName
         }
       }
     }
-  `)
+  `);
 
   const submit = async () => {
     const { data } = await actionMutation.mutate({
