@@ -14,6 +14,7 @@
       fragment Mobile_user on User {
         imageUrl
         firstName
+        lastName
         email
       }
     `
@@ -40,7 +41,7 @@
       <img class="h-10 w-10 rounded-full" src={$userData.imageUrl} alt="" />
     </div>
     <div class="ml-3">
-      <div class="text-base font-medium text-white">{$userData.firstName}</div>
+      <div class="text-base font-medium text-white">{$userData.firstName} {$userData.lastName}</div>
       <div class="text-sm font-medium text-gray-400">{$userData.email}</div>
     </div>
     <button
