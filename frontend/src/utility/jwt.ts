@@ -9,7 +9,7 @@ type User = {
 export const verifyAndDecodeToken = (token: string) => {
   try {
     return jwt.verify(token, JWT_SECRET) as User;
-  } catch (error) {
+  } catch {
     return null;
   }
 };
