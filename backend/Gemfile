@@ -27,7 +27,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+gem 'redis', '4.8.1'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -47,22 +47,22 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'dotenv-rails', '~> 2.8'
-gem 'dry-monads', '~> 1.6'
-gem 'dry-system', '~> 1.0'
-gem 'pg', '~> 1.5'
+gem 'dotenv-rails', '2.8.1'
+gem 'dry-monads', '1.6.0'
+gem 'dry-system', '1.0.1'
+gem 'pg', '1.5.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker', '~> 3.2'
-  gem 'pry', '~> 0.14.2'
-  gem 'rspec-rails', '~> 6.0'
-  gem 'rubocop', '~> 1.52'
-  gem 'rubocop-rails', '~> 2.20'
-  gem 'rubocop-rspec', '~> 2.22'
-  gem 'shoulda-matchers', '~> 5.3'
+  gem 'factory_bot_rails', '6.2.0'
+  gem 'faker', '3.2.0'
+  gem 'pry', '0.14.2'
+  gem 'rspec-rails', '6.0.3'
+  gem 'rubocop', '1.52.1'
+  gem 'rubocop-rails', '2.20.2'
+  gem 'rubocop-rspec', '2.22.0'
+  gem 'shoulda-matchers', '5.3.0'
 end
 
 group :development do
@@ -83,11 +83,11 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'devise', '~> 4.9'
+gem 'devise', '4.9.2'
 
 gem 'graphiql-rails', group: :development
-gem 'graphql', '~> 2.0'
+gem 'graphql', '2.0.23'
 
 gem 'rack-cors', '~> 2.0'
 
-gem 'jwt', '~> 2.7'
+gem 'jwt', '2.7.1'
