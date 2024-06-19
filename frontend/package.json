@@ -14,8 +14,8 @@
   "devDependencies": {
     "@sveltejs/kit": "2.5.17",
     "@types/jsonwebtoken": "9.0.6",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
-    "@typescript-eslint/parser": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "7.13.1",
+    "@typescript-eslint/parser": "7.13.1",
     "autoprefixer": "10.4.19",
     "eslint": "8.57.0",
     "eslint-config-prettier": "8.10.0",
