@@ -832,7 +832,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rgossiaux/svelte-headlessui@npm:^2.0.0":
+"@rgossiaux/svelte-headlessui@npm:2.0.0":
   version: 2.0.0
   resolution: "@rgossiaux/svelte-headlessui@npm:2.0.0"
   peerDependencies:
@@ -1021,7 +1021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-auto@npm:^3.2.2":
+"@sveltejs/adapter-auto@npm:3.2.2":
   version: 3.2.2
   resolution: "@sveltejs/adapter-auto@npm:3.2.2"
   dependencies:
@@ -2747,17 +2747,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"globals@npm:15.6.0":
+  version: 15.6.0
+  resolution: "globals@npm:15.6.0"
+  checksum: 10c0/ba488ec5bd770336a3e1ffec3f718077768aec99e16f30c33c0eeaed09e0b93fa06a24fc0d3844d1d81a678c86d22f04547703e87e2e4353601eddcb800479ec
+  languageName: node
+  linkType: hard
+
 "globals@npm:^14.0.0":
   version: 14.0.0
   resolution: "globals@npm:14.0.0"
   checksum: 10c0/b96ff42620c9231ad468d4c58ff42afee7777ee1c963013ff8aabe095a451d0ceeb8dcd8ef4cbd64d2538cef45f787a78ba3a9574f4a634438963e334471302d
-  languageName: node
-  linkType: hard
-
-"globals@npm:^15.6.0":
-  version: 15.6.0
-  resolution: "globals@npm:15.6.0"
-  checksum: 10c0/ba488ec5bd770336a3e1ffec3f718077768aec99e16f30c33c0eeaed09e0b93fa06a24fc0d3844d1d81a678c86d22f04547703e87e2e4353601eddcb800479ec
   languageName: node
   linkType: hard
 
@@ -3154,7 +3154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^5.4.1":
+"jose@npm:5.4.1":
   version: 5.4.1
   resolution: "jose@npm:5.4.1"
   checksum: 10c0/51234a7383eda796ac0b0a61ac1020efab8ee53717ffa74987aeab9c40c6fc2dd203ff5de805731399fc846a94d9be3ae0f140561d4c390cff0ac6c69300e897
@@ -4442,8 +4442,8 @@ __metadata:
   dependencies:
     "@melt-ui/pp": "npm:0.3.2"
     "@melt-ui/svelte": "npm:0.81.0"
-    "@rgossiaux/svelte-headlessui": "npm:^2.0.0"
-    "@sveltejs/adapter-auto": "npm:^3.2.2"
+    "@rgossiaux/svelte-headlessui": "npm:2.0.0"
+    "@sveltejs/adapter-auto": "npm:3.2.2"
     "@sveltejs/adapter-node": "npm:5.2.0"
     "@sveltejs/kit": "npm:2.5.17"
     "@sveltejs/vite-plugin-svelte": "npm:3.1.1"
@@ -4454,10 +4454,10 @@ __metadata:
     eslint: "npm:9.5.0"
     eslint-config-prettier: "npm:9.1.0"
     eslint-plugin-svelte: "npm:2.40.0"
-    globals: "npm:^15.6.0"
+    globals: "npm:15.6.0"
     houdini: "npm:1.2.47"
     houdini-svelte: "npm:1.2.47"
-    jose: "npm:^5.4.1"
+    jose: "npm:5.4.1"
     jsonwebtoken: "npm:9.0.2"
     postcss: "npm:8.4.38"
     prettier: "npm:3.3.2"

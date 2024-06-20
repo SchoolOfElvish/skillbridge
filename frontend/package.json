@@ -14,8 +14,8 @@
   "devDependencies": {
     "@melt-ui/pp": "0.3.2",
     "@melt-ui/svelte": "0.81.0",
-    "@rgossiaux/svelte-headlessui": "^2.0.0",
-    "@sveltejs/adapter-auto": "^3.2.2",
+    "@rgossiaux/svelte-headlessui": "2.0.0",
+    "@sveltejs/adapter-auto": "3.2.2",
     "@sveltejs/kit": "2.5.17",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
     "@types/eslint": "8.56.10",
@@ -24,7 +24,7 @@
     "eslint": "9.5.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-svelte": "2.40.0",
-    "globals": "^15.6.0",
+    "globals": "15.6.0",
     "houdini": "1.2.47",
     "houdini-svelte": "1.2.47",
     "postcss": "8.4.38",
@@ -42,7 +42,7 @@
   "dependencies": {
     "@sveltejs/adapter-node": "5.2.0",
     "@tailwindcss/forms": "0.5.7",
-    "jose": "^5.4.1",
+    "jose": "5.4.1",
     "jsonwebtoken": "9.0.2"
   },
   "packageManager": "yarn@4.3.0"
