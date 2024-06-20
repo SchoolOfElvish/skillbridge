@@ -69,6 +69,7 @@ GEM
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -133,7 +134,8 @@ GEM
     graphiql-rails (1.9.0)
       railties
       sprockets-rails
-    graphql (2.0.23)
+    graphql (2.3.5)
+      base64
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -334,7 +336,7 @@ DEPENDENCIES
   factory_bot_rails (= 6.4.3)
   faker (= 3.4.1)
   graphiql-rails
-  graphql (= 2.0.23)
+  graphql (= 2.3.5)
   importmap-rails
   jbuilder
   jwt (= 2.7.1)
