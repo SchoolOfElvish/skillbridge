@@ -27,6 +27,7 @@
   let birthdate = '';
 
   let { firstName, lastName, email, about }: Omit<User, 'birthdate'> = {
+    id: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -45,8 +46,8 @@
   }
 
   const actionMutation = graphql(`
-    mutation SettingsPageUserUpdate($firstName: String!) {
-      updateUser(input: { userId: "Z2lkOi8vc2tpbGxicmlkZ2UvVXNlci84NQ", firstName: $firstName }) {
+    mutation SettingsPageUserUpdate($userId: ID!, $firstName: String!) {
+      updateUser(input: { userId: $userId, firstName: $firstName }) {
         user {
           lastName
           firstName

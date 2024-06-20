@@ -2,5 +2,5 @@
 
 set -e
 
-command="docker compose run --rm frontend /bin/bash -c 'bun lint ${@}'"
+command="docker compose run --rm frontend /bin/bash -c 'yarn lint ${@}'"
 eval $command
