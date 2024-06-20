@@ -1,4 +1,4 @@
-FROM node:22
+FROM node:22.3.0
 
 ENV YARN_VERSION 4.3.0
 
