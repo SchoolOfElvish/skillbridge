@@ -12,3 +12,7 @@ export const setCookie = (cookies: Cookies, name: string, value: string, remembe
     ...(remember && temporaryCookieOptions)
   });
 };
+
+export const deleteCookie = (cookies: Cookies, name: string) => {
+  cookies.delete(name, { path: '/' });
+}

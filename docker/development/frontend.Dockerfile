@@ -1,19 +1,8 @@
-FROM oven/bun:1
+FROM node:22
 
-ARG UID=1000
+ENV YARN_VERSION 4.3.0
 
-RUN set -eux; \
-    if [ "${UID}" = "1000" ]; then \
-      # this image already has "node" user with UID 1000
-      usermod -l frontend -s /bin/bash bun; \
-      groupmod -n frontend bun; \
-    else \
-      useradd -s /bin/bash -u ${UID} -m frontend; \
-    fi; \
-    mkdir -p /frontend/node_modules; \
-    chown -R frontend:frontend /frontend
-
-USER frontend
+RUN corepack enable && corepack prepare yarn
 
 WORKDIR /frontend
 

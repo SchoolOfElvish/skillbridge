@@ -1,7 +1,7 @@
 import { PUBLIC_SERVER_HOST_URL } from '$env/static/public';
 import type { RequestEvent } from '@sveltejs/kit';
 import { verifyAndDecodeToken } from '$utility/jwt';
-import { setCookie } from '$utility/cookies';
+import { deleteCookie, setCookie } from '$utility/cookies';
 import { to } from '$utility/routes';
 
 type ResponseData = {
@@ -40,13 +40,13 @@ export async function handleTokenVerification(
         setCookie(event.cookies, 'token', body.token, false);
         setCookie(event.cookies, 'refreshToken', body.refreshToken, false);
       } else {
-        event.cookies.delete('token');
-        event.cookies.delete('refreshToken');
+        deleteCookie(event.cookies, 'token');
+        deleteCookie(event.cookies, 'refreshToken');
       }
     } catch (error) {
       console.error('Failed to refresh token:', error);
-      event.cookies.delete('token');
-      event.cookies.delete('refreshToken');
+      deleteCookie(event.cookies, 'token');
+      deleteCookie(event.cookies, 'refreshToken');
     }
   }
 }

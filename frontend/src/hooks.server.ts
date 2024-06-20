@@ -2,10 +2,11 @@ import { setSession } from '$houdini';
 import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
 import { to } from '$utility/routes';
 import { handleTokenVerification } from '$utility/api';
+import { deleteCookie } from '$utility/cookies';
 
 function handleSignOut(event: RequestEvent): void {
-  event.cookies.delete('token');
-  event.cookies.delete('refreshToken');
+  deleteCookie(event.cookies, 'token');
+  deleteCookie(event.cookies, 'refreshToken');
   throw redirect(302, to.signIn());
 }
 
