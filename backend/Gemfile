@@ -50,7 +50,7 @@ gem 'bootsnap', require: false
 gem 'dotenv-rails', '2.8.1'
 gem 'dry-monads', '1.6.0'
 gem 'dry-system', '1.0.1'
-gem 'pg', '1.5.3'
+gem 'pg', '1.5.6'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
