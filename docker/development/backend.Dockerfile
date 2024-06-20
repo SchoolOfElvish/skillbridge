@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-buster
+FROM ruby:3.3.3-bookworm
 
 RUN set -eux; \
     apt-get update; \

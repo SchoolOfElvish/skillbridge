@@ -2,5 +2,5 @@
 
 set -e
 
-command="docker compose run --rm frontend /bin/bash -c 'bun format ${@}'"
+command="docker compose run --rm frontend /bin/bash -c 'yarn format ${@}'"
 eval $command

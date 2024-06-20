@@ -339,8 +339,8 @@ DEPENDENCIES
   jwt (= 2.7.1)
   pg (= 1.5.3)
   pry (= 0.14.2)
-  puma (~> 5.0)
-  rack-cors (~> 2.0)
+  puma (= 5.6.8)
+  rack-cors (= 2.0.2)
   rails (~> 7.0.5)
   redis (= 4.8.1)
   rspec-rails (= 6.0.3)
@@ -357,7 +357,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.3.3p89
 
 BUNDLED WITH
-   2.4.14
+   2.4.10

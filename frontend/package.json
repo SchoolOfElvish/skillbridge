@@ -12,16 +12,19 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@melt-ui/pp": "0.3.2",
+    "@melt-ui/svelte": "0.81.0",
+    "@rgossiaux/svelte-headlessui": "^2.0.0",
     "@sveltejs/adapter-auto": "^3.2.2",
     "@sveltejs/kit": "2.5.17",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
-    "@types/eslint": "^8.56.10",
+    "@types/eslint": "8.56.10",
     "@types/jsonwebtoken": "9.0.6",
-    "typescript-eslint": "^8.0.0-alpha.30",
     "autoprefixer": "10.4.19",
     "eslint": "9.5.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-svelte": "2.40.0",
+    "globals": "^15.6.0",
     "houdini": "1.2.47",
     "houdini-svelte": "1.2.47",
     "postcss": "8.4.38",
@@ -32,15 +35,15 @@
     "tailwindcss": "3.4.4",
     "tslib": "2.6.3",
     "typescript": "5.4.5",
-    "vite": "5.2.6",
-    "globals": "^15.6.0"
+    "typescript-eslint": "8.0.0-alpha.30",
+    "vite": "5.2.6"
   },
   "type": "module",
   "dependencies": {
-    "@rgossiaux/svelte-headlessui": "2.0.0",
-    "@rgossiaux/svelte-heroicons": "0.1.2",
     "@sveltejs/adapter-node": "5.2.0",
     "@tailwindcss/forms": "0.5.7",
+    "jose": "^5.4.1",
     "jsonwebtoken": "9.0.2"
-  }
+  },
+  "packageManager": "yarn@4.3.0"
 }

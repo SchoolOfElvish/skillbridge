@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def refresh_token
     case refresh
     in Success[token, refresh_token]
-      render json: { token:, refreshToken: }
+      render json: { token:, refreshToken: refresh_token }
     in Failure[:invalid_token]
       render_failure('Invalid token', :unauthorized)
     in Failure[:missing_token]
