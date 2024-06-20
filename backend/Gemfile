@@ -90,4 +90,4 @@ gem 'graphql', '2.3.5'
 
 gem 'rack-cors', '2.0.2'
 
-gem 'jwt', '2.7.1'
+gem 'jwt', '2.8.2'
