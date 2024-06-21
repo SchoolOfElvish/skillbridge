@@ -8,6 +8,7 @@ on:
 
 jobs:
   validate-backend:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +28,7 @@ jobs:
         run: bin/backend/rubocop
 
       - name: Prepare database
-        run: bin/backend/rails db:prepare
+        run: bin/backend/rails db:prepare --trace
 
       - name: Run tests
         run: bin/backend/rspec
