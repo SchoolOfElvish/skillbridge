@@ -2,5 +2,5 @@
 
 set -e
 
-command="docker compose run --rm backend /bin/bash -c 'bin/rake ${@}'"
+command="docker compose run --rm backend /bin/bash -c 'bundle exec rake ${@}'"
 eval $command
