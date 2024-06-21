@@ -47,7 +47,7 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'dotenv-rails', '2.8.1'
+gem 'dotenv-rails', '3.1.2'
 gem 'dry-monads', '1.6.0'
 gem 'dry-system', '1.0.1'
 gem 'pg', '1.5.6'
