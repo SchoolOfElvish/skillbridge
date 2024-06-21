@@ -25,7 +25,7 @@ ENV BUNDLE_USER_CACHE=vendor/bundle/cache
 RUN bundle config set force_ruby_platform true
 
 # Install dependencies
-COPY --chown=backend:backend Gemfile Gemfile.lock ./
+COPY --chown=backend:backend backend/Gemfile backend/Gemfile.lock ./
 RUN bundle install
 
 # Copy the rest of the application code
