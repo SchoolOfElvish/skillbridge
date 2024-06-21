@@ -19,7 +19,7 @@ jobs:
           curl https://api.tawbar.com/projects/v1/${{ secrets.TAWBAR_FRONTEND_PROJECT_ID }}/test -H 'Authorization: ${{ secrets.TAWBAR_FRONTEND_API_KEY }}' -o ./frontend/.env
 
       - name: Build docker images
-        run: docker compose build backend
+        run: docker compose build --build-arg UID=$UID backend
 
       - name: Install gems
         run: bin/backend/bundle install
