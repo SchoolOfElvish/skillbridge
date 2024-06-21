@@ -8,7 +8,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load if %w[development test].include? ENV['RAILS_ENV']
+Dotenv::Rails.load if %w[development test].include? ENV['RAILS_ENV']
 
 module Skillbridge
   class Application < Rails::Application
