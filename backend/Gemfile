@@ -73,7 +73,7 @@ end
 gem 'devise', '4.9.4'
 
 gem 'graphiql-rails', group: :development
-gem 'graphql', '2.3.5'
+gem 'graphql', '2.3.14'
 
 gem 'rack-cors', '2.0.2'
 
