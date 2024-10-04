@@ -1,4 +1,4 @@
-FROM node:20.14.0-alpine as BUILD_IMAGE
+FROM node:20.18.0-alpine as BUILD_IMAGE
 WORKDIR /frontend
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
 
@@ -21,7 +21,7 @@ RUN pnpm build
 # remove dev dependencies
 RUN pnpm prune --production
 
-FROM node:20.14.0-alpine
+FROM node:20.18.0-alpine
 WORKDIR /frontend
 
 COPY --from=BUILD_IMAGE /frontend/package.json .
