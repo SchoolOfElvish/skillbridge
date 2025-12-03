@@ -2475,7 +2475,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.7, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0":
+"fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
   dependencies:
@@ -4463,7 +4463,7 @@ __metadata:
     prettier: "npm:3.3.2"
     prettier-plugin-svelte: "npm:3.2.5"
     svelte: "npm:4.2.18"
-    svelte-check: "npm:3.8.1"
+    svelte-check: "npm:3.8.6"
     tailwindcss: "npm:3.4.4"
     tslib: "npm:2.6.3"
     typescript: "npm:5.5.2"
@@ -4655,14 +4655,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-check@npm:3.8.1":
-  version: 3.8.1
-  resolution: "svelte-check@npm:3.8.1"
+"svelte-check@npm:3.8.6":
+  version: 3.8.6
+  resolution: "svelte-check@npm:3.8.6"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.17"
     chokidar: "npm:^3.4.1"
-    fast-glob: "npm:^3.2.7"
-    import-fresh: "npm:^3.2.1"
     picocolors: "npm:^1.0.0"
     sade: "npm:^1.7.4"
     svelte-preprocess: "npm:^5.1.3"
@@ -4671,7 +4669,7 @@ __metadata:
     svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
   bin:
     svelte-check: bin/svelte-check
-  checksum: 10c0/1e217fbf1f0f6bdc15455acba50dd4056c8631a9b5d82dae8818146a2dd4b7ebe9cb45259f3894e70011e185ea58a62d354671c427ceaa1f02ad1acd7dfbe085
+  checksum: 10c0/2b94b0b085e6f3fb0bc92e2aa8d29b3372df3d9ebf0d985114bc18622556607ccdfdc774fe12bb6c92b38718e5f06040f37d6eda40d843a1d78d446c47aa86b5
   languageName: node
   linkType: hard
 
