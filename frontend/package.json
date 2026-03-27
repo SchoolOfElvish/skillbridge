@@ -18,7 +18,7 @@
     "@sveltejs/adapter-auto": "3.2.2",
     "@sveltejs/kit": "2.5.17",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
-    "@types/eslint": "8.56.10",
+    "@types/eslint": "8.56.12",
     "@types/jsonwebtoken": "9.0.6",
     "autoprefixer": "10.4.19",
     "eslint": "9.5.0",
