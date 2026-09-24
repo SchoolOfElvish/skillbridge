@@ -70,7 +70,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'devise', '4.9.4'
+gem 'devise', '5.0.4'
 
 gem 'graphiql-rails', group: :development
 gem 'graphql', '2.3.5'
